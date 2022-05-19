@@ -1,0 +1,34 @@
+﻿<Window x:Class="ZPO_lab7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZPO_lab7"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="640">
+    <Grid>
+
+        <TextBox HorizontalAlignment="Left" Name="textBoxName" Margin="476,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+                 Text = "{Binding SelectedValue, ElementName=listView}"/>
+        <TextBox HorizontalAlignment="Left" Name="textBoxSurname" Margin="476,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+                 Text = "{Binding SelectedValuePath, ElementName=listView, XPath=Surname}"/>
+        <TextBox HorizontalAlignment="Left" Name="textBoxYear" Margin="476,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,-0.989"
+                 Text = ""/>
+        <TextBox HorizontalAlignment="Left" Name="textBoxCity" Margin="476,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+                 Text = ""/>
+        <ListView Margin="0,0,180,0" Name="listView" MaxWidth="437" MaxHeight="434">
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Surname" Width="50" DisplayMemberBinding="{Binding Surname}" />
+                    <GridViewColumn Header="Age" Width="150" DisplayMemberBinding="{Binding Age}" />
+                    <GridViewColumn Header="City" Width="120" DisplayMemberBinding="{Binding City}" />
+                </GridView>
+            </ListView.View>
+            <ListBox Height="100" Width="100"/>
+        </ListView>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="476,347,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+
+    </Grid>
+</Window>
