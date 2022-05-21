@@ -7,28 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="640">
     <Grid>
-
         <TextBox HorizontalAlignment="Left" Name="textBoxName" Margin="476,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
-                 Text = "{Binding SelectedValue, ElementName=listView}"/>
+                 Text = "{Binding SelectedItem.Name, ElementName=personList}"/>
         <TextBox HorizontalAlignment="Left" Name="textBoxSurname" Margin="476,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
-                 Text = "{Binding SelectedValuePath, ElementName=listView, XPath=Surname}"/>
+                 Text = "{Binding SelectedItem.Surname, ElementName=personList}"/>
         <TextBox HorizontalAlignment="Left" Name="textBoxYear" Margin="476,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,-0.989"
-                 Text = ""/>
+                 Text = "{Binding SelectedItem.Age, ElementName=personList}"/>
         <TextBox HorizontalAlignment="Left" Name="textBoxCity" Margin="476,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
-                 Text = ""/>
-        <ListView Margin="0,0,180,0" Name="listView" MaxWidth="437" MaxHeight="434">
-            <ListView.View>
-                <GridView>
+                 Text = "{Binding SelectedItem.City, ElementName=personList}"/>
 
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Surname" Width="50" DisplayMemberBinding="{Binding Surname}" />
-                    <GridViewColumn Header="Age" Width="150" DisplayMemberBinding="{Binding Age}" />
-                    <GridViewColumn Header="City" Width="120" DisplayMemberBinding="{Binding City}" />
-                </GridView>
-            </ListView.View>
-            <ListBox Height="100" Width="100"/>
-        </ListView>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="476,347,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+        <Button Content="Add new" HorizontalAlignment="Left" Margin="476,347,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+
+        <ListBox Margin="0,0,208,0" Name="personList" ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="16" Text="{Binding Name}" HorizontalAlignment="Center" Name="q"/>
+                        <TextBlock FontSize="16" Text="{Binding Surname}" HorizontalAlignment="Center" />
+                        <TextBlock FontSize="16" Text="{Binding Age}" HorizontalAlignment="Center" />
+                        <TextBlock FontSize="16" Text="{Binding City}" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="476,387,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

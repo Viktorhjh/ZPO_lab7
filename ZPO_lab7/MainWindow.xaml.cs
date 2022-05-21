@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,34 +15,38 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ZPO_lab7
-{
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+{    
     public partial class MainWindow : Window
     {
-        List<Person> list = new List<Person>();        
+        public ObservableCollection<Person> Persons { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
-            list.Add(new Person("qwe","asd",54, "zxc"));
-            list.Add(new Person("rty", "fgh", 98, "vbn"));
-
+            Persons = new ObservableCollection<Person>();
+            personList.ItemsSource = Persons;
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                list.Add(new Person(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxYear.Text), textBoxCity.Text));
+                Persons.Add(new Person(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxYear.Text), textBoxCity.Text));
             }
             catch
             {
-                MessageBox.Show("Error!!");
+                MessageBox.Show("Error!");
             }
 
-            listView.ItemsSource = list;
-            listView.Items.Refresh();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            textBoxName.Clear();
+            textBoxSurname.Clear();
+            textBoxYear.Clear();
+            textBoxCity.Clear();
         }
     }
 }
