@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace ZPO_lab7
     public partial class MainWindow : Window
     {
         public ObservableCollection<Person> Persons { get; set; }
+        BitmapImage bt;
 
         public MainWindow()
         {
@@ -32,7 +34,10 @@ namespace ZPO_lab7
         {
             try
             {
-                Persons.Add(new Person(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxYear.Text), textBoxCity.Text));
+                if(bt != null)
+                    Persons.Add(new Person(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxYear.Text), textBoxCity.Text, bt));
+                else
+                    Persons.Add(new Person(textBoxName.Text, textBoxSurname.Text, int.Parse(textBoxYear.Text), textBoxCity.Text));
             }
             catch
             {
@@ -47,6 +52,22 @@ namespace ZPO_lab7
             textBoxSurname.Clear();
             textBoxYear.Clear();
             textBoxCity.Clear();
+            //BigImg.Visibility = Visibility.Hidden;
         }
+
+       /* private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();            
+            openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
+            
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Uri fileUri = new Uri(openFileDialog.FileName);
+                BigImg.Source = new BitmapImage(fileUri);
+                bt = new BitmapImage(fileUri);
+                BigImg.Visibility = Visibility.Visible;
+            }
+
+        }*/
     }
 }

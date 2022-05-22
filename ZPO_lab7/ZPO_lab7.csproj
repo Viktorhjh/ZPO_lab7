@@ -6,4 +6,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="ava.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\ava.png" />
+  </ItemGroup>
+
 </Project>

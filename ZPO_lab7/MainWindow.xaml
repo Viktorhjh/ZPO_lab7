@@ -7,31 +7,39 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="640">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Name="textBoxName" Margin="476,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+        <TextBox HorizontalAlignment="Left" Name="textBoxName" Margin="476,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
                  Text = "{Binding SelectedItem.Name, ElementName=personList}"/>
-        <TextBox HorizontalAlignment="Left" Name="textBoxSurname" Margin="476,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+        <TextBox HorizontalAlignment="Left" Name="textBoxSurname" Margin="476,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
                  Text = "{Binding SelectedItem.Surname, ElementName=personList}"/>
-        <TextBox HorizontalAlignment="Left" Name="textBoxYear" Margin="476,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,-0.989"
+        <TextBox HorizontalAlignment="Left" Name="textBoxYear" Margin="476,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,-0.989"
                  Text = "{Binding SelectedItem.Age, ElementName=personList}"/>
-        <TextBox HorizontalAlignment="Left" Name="textBoxCity" Margin="476,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+        <TextBox HorizontalAlignment="Left" Name="textBoxCity" Margin="476,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
                  Text = "{Binding SelectedItem.City, ElementName=personList}"/>
-
-        <Button Content="Add new" HorizontalAlignment="Left" Margin="476,347,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
-
-        <ListBox Margin="0,0,208,0" Name="personList" ItemsSource="{Binding}">
+        <!--<Image HorizontalAlignment="Left" Height="100" Margin="340,26,0,0" VerticalAlignment="Top" Width="100" Name="BigImg"
+                 Source = "{Binding SelectedItem.Img, ElementName=personList}"/>
+        <Button Content="Add photo" HorizontalAlignment="Left" Margin="348,163,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click_2"/>-->
+        <Button Content="Add new" HorizontalAlignment="Left" Margin="480,287,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+        
+        <ListBox Margin="0,0,320,0" Name="personList" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="5">
-                        <TextBlock FontSize="16" Text="{Binding Name}" HorizontalAlignment="Center" Name="q"/>
-                        <TextBlock FontSize="16" Text="{Binding Surname}" HorizontalAlignment="Center" />
-                        <TextBlock FontSize="16" Text="{Binding Age}" HorizontalAlignment="Center" />
-                        <TextBlock FontSize="16" Text="{Binding City}" HorizontalAlignment="Center" />
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <Image Source="{Binding Img}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50"/>
+                        <TextBlock FontSize="16" Margin="5" Text="{Binding Name}" HorizontalAlignment="Center"/>
+                        <TextBlock FontSize="16" Margin="5" Text="{Binding Surname}" HorizontalAlignment="Center" />
+                        <TextBlock FontSize="16" Margin="5" Text="{Binding Age}" HorizontalAlignment="Center" />
+                        <TextBlock FontSize="16" Margin="5" Text="{Binding City}" HorizontalAlignment="Center" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Button Content="Clear" HorizontalAlignment="Left" Margin="476,387,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_1"/>
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="480,327,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_1"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="480,11,0,0" VerticalAlignment="Top"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Margin="480,74,0,0" VerticalAlignment="Top"/>
+        <Label Content="Age" HorizontalAlignment="Left" Margin="480,132,0,0" VerticalAlignment="Top"/>
+        <Label Content="City" HorizontalAlignment="Left" Margin="480,198,0,0" VerticalAlignment="Top"/>
+        
 
     </Grid>
 </Window>
